@@ -45,9 +45,11 @@ public class LoginServlet extends HttpServlet {
         //2:判断用户名，密码是否正确（假设都是 123 成功）
         if ("123".equals(username) && "123".equals(password)){
             // 给客户端 发送数据
-            response.getWriter().write("Login Success!");
+            //response.getWriter().write("Login Success!");
+            response.getWriter().write("登录成功!");
         } else {
-            response.getWriter().write("Login Failure!");
+            //response.getWriter().write("Login Failure!");
+            response.getWriter().write("登录失败");
         }
 
     }
