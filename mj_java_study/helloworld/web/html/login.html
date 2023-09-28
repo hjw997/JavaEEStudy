@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+<h1>这是web项目的的登录页</h1>
+<!--
+action: 表示这个要提交给谁？比如/hello 就是 Application context中的指定的 。
+/login是哪个 注解Servlet 是login 的来处理这个请求提交。 @WebServlet("/login")
+-->
+<form action="/hello/login" method="post">
+  <div>用户名：<input name="username"></div>
+  <div>密  码：<input name="password"></div>
+  <button type="submit">登录</button>
+</form>
+</body>
+</html>
