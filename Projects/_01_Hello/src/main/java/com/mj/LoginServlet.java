@@ -35,6 +35,10 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //super.doPost(req, resp); PS不要调用 super 否则报 405
         System.out.println("来请求了");
+        ///POST请求的 中文内容 默认会乱码。
+        ///0设置请求数据的编码：先设置编码 再去取。
+        ///设置客户端请求数据的 解析编码。
+        request.setCharacterEncoding("UTF-8");
 
         //1.取出请求的参数 option + cmd +v 快速生成局部变量（默认的快捷键）
         String username = request.getParameter("username");
@@ -42,6 +46,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("参数：" + username + "_" + password);
 
         ///解决乱码问题：先说清楚 采用什么编码
+        //MINEType: 普通文本 。 charset：写出的数据使用什么编码方式。
         response.setContentType("text/plain;charset=UTF-8");
 
         // 然后这里的 write 才会是 使用上面编码规定的内容写。
