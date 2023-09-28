@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+</head>
+<body>
+<!--
+action: 使用 Application context 访问。 是/hello
+/login  是访问 Servlet 的注解带有 login的。 @WebServlet("/login")
+//回顾 使用 Servlet 的条件是什么？
+-->
+<form action="/hello/login" method="post">
+  <div>用户名：<input type="text" name="username"></div>
+  <div>用户名：<input type="text" name="password"></div>
+  <div><button type="submit">登录</button></div>
+</form>
+</body>
+</html>
