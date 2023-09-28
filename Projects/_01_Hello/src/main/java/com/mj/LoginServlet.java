@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * 要是用 Servlet 的条件：
@@ -39,6 +40,13 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         System.out.println("参数：" + username + "_" + password);
+
+        ///解决乱码问题：先说清楚 采用什么编码
+        response.setContentType("text/plain;charset=UTF-8");
+
+        // 然后这里的 write 才会是 使用上面编码规定的内容写。
+        //PrintWriter writer = response.getWriter();
+
 
         // ctr + d : debug 快捷键
         // 快速弹出 Edit Config 弹框 ： 自己配置的是 Shift + e 。
