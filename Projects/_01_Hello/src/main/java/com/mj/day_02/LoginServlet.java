@@ -1,4 +1,4 @@
-package com.mj;
+package com.mj.day_02;
 
 
 import javax.servlet.ServletException;
