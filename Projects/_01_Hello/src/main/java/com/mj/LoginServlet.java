@@ -35,6 +35,22 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //super.doPost(req, resp); PS不要调用 super 否则报 405
         System.out.println("来请求了");
+
+        //写出去一个普通文本给客户端。
+        outPlain(request,response);
+
+
+    }
+
+    /**
+     * 写出去一个普通文本：
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void outPlain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
         ///POST请求的 中文内容 默认会乱码。
         ///0设置请求数据的编码：先设置编码 再去取。
         ///设置客户端请求数据的 解析编码。
@@ -64,6 +80,5 @@ public class LoginServlet extends HttpServlet {
             //response.getWriter().write("Login Failure!");
             response.getWriter().write("登录失败");
         }
-
     }
 }
