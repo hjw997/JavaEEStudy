@@ -14,21 +14,21 @@ import java.io.PrintWriter;
  * 1.导入依赖库 看笔记图片
  * 2.要在类名上注解：@WebServlet("/login") 表明这个注解 要处理的是哪个请求。
  * 2.要能处理请求 覆写 doPost doGet 等的方法。
- *
  */
 @WebServlet("/login") //请求的路劲 ps / 不能少。
 public class LoginServlet extends HttpServlet {
     /**
-     *  当客户端请求的是 Get 请求， 就会调用 HttpServlet 的doGet方法。
-     * @param request 用来 接收客户端发来的数据
+     * 当客户端请求的是 Get 请求， 就会调用 HttpServlet 的doGet方法。
+     *
+     * @param request  用来 接收客户端发来的数据
      * @param response 用来给客户端 发送响应
      * @throws ServletException
      * @throws IOException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       // 不管什么请求都进入 doPost 去处理
-        doPost(request,response);
+        // 不管什么请求都进入 doPost 去处理
+        doPost(request, response);
     }
 
     @Override
@@ -37,19 +37,69 @@ public class LoginServlet extends HttpServlet {
         System.out.println("来请求了");
 
         //写出去一个普通文本给客户端。
-        outPlain(request,response);
+        //outPlain(request, response);
 
+        outHtml(request,response);
 
     }
 
     /**
-     * 写出去一个普通文本：
+     * 2：写网页数据给客户端
+     *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
      */
-    private void outPlain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void outHtml(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ///0.设置客户端请求数据的 解析编码。
+        request.setCharacterEncoding("UTF-8");
+
+        //1.获取请求参数
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        //2. 第一个text/html; 是：MINEType: 普通文本(text/plain) HTML是：text/html 。
+        // charset=UTF-8：写出的数据使用什么编码方式。
+        response.setContentType("text/html;charset=UTF-8");
+
+        //3.拿到输出流 。 再用输出流之前 记得编码方式。
+        PrintWriter writer = response.getWriter();
+        /**
+         * <h1 style="color: blue; border: 1px solid black">登录成功</h1>
+         * <ul>
+         *   <li>个人信息</li>
+         *   <li>修改密码</li>
+         *   <li>退出登录</li>
+         * </ul>
+         */
+
+        //3.判断账号密码
+        if ("123".equals(username) && "123".equals(password)) {
+            writer.write("<h1 style=\"color: blue; border: 1px solid black;\">登录成功</h1>");
+            writer.write("<ul>");
+            writer.write("<li>个人信息</li>");
+            writer.write("<li>修改密码</li>");
+            writer.write("<li>退出登录</li>");
+            writer.write("</ul>");
+        }else {
+            writer.write("<h1 style=\"color: red; border: 1px solid black;\">登录失败</h1>");
+            writer.write("<ul>");
+            writer.write("<li>重新登录</li>");
+            writer.write("</ul>");
+        }
+
+    }
+
+    /**
+     * 1.写出去一个普通文本：
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void outPlain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ///POST请求的 中文内容 默认会乱码。
         ///0设置请求数据的编码：先设置编码 再去取。
@@ -72,7 +122,7 @@ public class LoginServlet extends HttpServlet {
         // ctr + d : debug 快捷键
         // 快速弹出 Edit Config 弹框 ： 自己配置的是 Shift + e 。
         //2:判断用户名，密码是否正确（假设都是 123 成功）
-        if ("123".equals(username) && "123".equals(password)){
+        if ("123".equals(username) && "123".equals(password)) {
             // 给客户端 发送数据
             //response.getWriter().write("Login Success!");
             response.getWriter().write("登录成功!");
