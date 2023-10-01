@@ -1,0 +1,27 @@
+-- 查询所有数据库
+show databases ;
+
+# 创建数据库
+create database db01;
+
+drop table if exists student;
+
+create table student
+(
+    name        varchar(20),
+    age         int,
+    birthday    datetime default current_timestamp,
+    update_info datetime on update current_timestamp
+);
+
+INSERT INTO student
+(name,age,birthday)
+VALUES
+('jack',20,'2011-10-01 23:37:58');
+
+INSERT INTO student
+(name,age)
+VALUES
+('Rose',22);
+
+

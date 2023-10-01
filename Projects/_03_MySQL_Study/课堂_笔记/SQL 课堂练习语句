@@ -1,0 +1,9 @@
+
+-- 多表查询
+-- 查询 用户表中的用户多对应的公司名称.
+select cr.name,cr.company_id, cy.id, cy.name
+from
+customer as cr,
+company cy
+where cr.company_id = cy.id
+

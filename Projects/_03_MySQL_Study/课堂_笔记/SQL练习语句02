@@ -1,0 +1,33 @@
+drop table if exists customer;
+drop table if exists company;
+create table if not exists company
+(
+    id      int auto_increment primary key,
+    name    varchar(20) not null unique,
+    address varchar(20)
+);
+
+
+
+create table customer
+(
+    id int auto_increment primary key,
+    name varchar(20) not null ,
+    age int ,
+    company_id INT not null ,
+#     on delete cascade 级联,在删除被引用的记录时,关联的记录也会被删除. 危险❌
+#     foreign key (company_id) references company(id) on delete cascade
+    foreign key (company_id) references company(id) on update cascade
+);
+
+insert  into company(name, address) values ('阿里baba','杭州');
+insert  into company(name, address) values ('腾讯','深圳');
+
+insert into customer(name,age,company_id) values('张三',18,1);
+insert into customer(name,age,company_id) values('李四',20,2);
+insert into customer(name,age,company_id) values('王五',25,1);
+
+# insert into customer(name,age,company_id) values('老六',30,null);
+# delete from company where id = 1;
+
+update company set id=11 where id=1;
