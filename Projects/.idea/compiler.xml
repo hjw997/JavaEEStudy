@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="_03_crm_class_05" />
         <module name="_02_CRM" />
         <module name="_01_Hello" />
       </profile>
@@ -13,6 +14,7 @@
     <bytecodeTargetLevel>
       <module name="_01_Hello" target="1.5" />
       <module name="_02_CRM" target="1.5" />
+      <module name="_03_crm_class_05" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

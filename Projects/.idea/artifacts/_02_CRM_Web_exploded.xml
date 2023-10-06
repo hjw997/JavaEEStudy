@@ -2,12 +2,12 @@
   <artifact type="exploded-war" name="_02_CRM:Web exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/_02_CRM_Web_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="_02_CRM/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="_02_CRM" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="_02_CRM/web/Web" />
     </root>
   </artifact>
 </component>

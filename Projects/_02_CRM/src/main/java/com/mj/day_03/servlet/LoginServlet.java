@@ -107,6 +107,7 @@ public class LoginServlet extends HttpServlet {
             writer.write(" </tr>");
         }
         writer.write(" </tbody>");
+        writer.write(" </table>");
 
     }
 
